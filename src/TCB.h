@@ -3,11 +3,11 @@
 
 #include <stdint.h>
 
-#define TASK_STACK_SIZE	1024
+#define TASK_STACK_SIZE	960
 
 typedef struct Tcb Tcb;
 
-typedef Tcb {
+struct Tcb{
 	Tcb *next;
 	char *name;									// Task name	
 	uint32_t 	sp;								// Stack pointer (R13)
