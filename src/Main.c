@@ -34,7 +34,7 @@ int main() {
 	while(1) {
 	}
 
-	return 0;				// Verify that 'variableInC' now contains 0xB19FACE
+	//return 0;				// Verify that 'variableInC' now contains 0xB19FACE
 }
 
 int cFunc() {

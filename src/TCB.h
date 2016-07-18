@@ -40,6 +40,7 @@ extern Tcb task2Tcb;
 extern uint8_t tempStack[TASK_STACK_SIZE];
 
 void taskOne(void);
+void taskTwo(void);
 void initTcb(void);
 
 #endif	// __TCB_H__

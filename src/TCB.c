@@ -8,10 +8,13 @@ Tcb *runningQueue;
 
 uint8_t tempStack[TASK_STACK_SIZE];
 
-CpuContext *cc = (CpuContext *)(((uint32_t)(&task1Tcb.virtualStack[TASK_STACK_SIZE])) - sizeof(CpuContext));
+CpuContext *cc;
 
 void taskOne(void){
-
+	while(1){}
+}
+void taskTwo(void){
+	while(1){}
 }
 
 /**
@@ -22,6 +25,7 @@ void initTcb() {
 	mainTcb.sp = 0x12345678;
 	
 	task1Tcb.name = "task_1";
+	cc = (CpuContext *)(((uint32_t)(&task1Tcb.virtualStack[TASK_STACK_SIZE])) - sizeof(CpuContext));
 	task1Tcb.sp = (uint32_t)cc;
 	
 	cc->r4   = 0x44444444;
@@ -43,6 +47,14 @@ void initTcb() {
 	
 	runningQueue = &mainTcb;
 	readyQueue = &task1Tcb;
+	
+	task2Tcb.name = "task_2";
+	cc = (CpuContext *)(((uint32_t)(&task2Tcb.virtualStack[TASK_STACK_SIZE])) - sizeof(CpuContext));
+	task2Tcb.sp = (uint32_t)cc;
+	
+	cc->pc   = (uint32_t)taskTwo;
+	cc->xpsr = 0x01000000;
+	
 }
 
 // Study the code in AsssemblyModule.s and take note of what
