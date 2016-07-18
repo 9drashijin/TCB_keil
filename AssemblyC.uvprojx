@@ -447,6 +447,16 @@
               <FileType>2</FileType>
               <FilePath>.\src\AssemblyModule.s</FilePath>
             </File>
+            <File>
+              <FileName>SaveRegisters.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\src\SaveRegisters.s</FilePath>
+            </File>
+            <File>
+              <FileName>SaveRegisters.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\SaveRegisters.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

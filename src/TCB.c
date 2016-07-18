@@ -2,12 +2,13 @@
 
 Tcb mainTcb;
 Tcb task1Tcb;
+Tcb task2Tcb;
 Tcb *readyQueue;
 Tcb *runningQueue;
 
 uint8_t tempStack[TASK_STACK_SIZE];
 
-CpuContext *cc = (CpuContext *)(((uint32_t)&task1Tcb.virtualStack[TASK_STACK_SIZE]) - sizeof(CpuContext));
+CpuContext *cc = (CpuContext *)(((uint32_t)(&task1Tcb.virtualStack[TASK_STACK_SIZE])) - sizeof(CpuContext));
 
 void taskOne(void){
 

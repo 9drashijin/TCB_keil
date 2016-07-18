@@ -5,11 +5,14 @@
 
 #define TASK_STACK_SIZE	1024
 
-typedef struct {
+typedef struct Tcb Tcb;
+
+typedef Tcb {
+	Tcb *next;
 	char *name;									// Task name	
 	uint32_t 	sp;								// Stack pointer (R13)
 	uint8_t		virtualStack[TASK_STACK_SIZE];
-} Tcb;
+};
 
 typedef struct {
 	uint32_t r4;
@@ -32,6 +35,7 @@ typedef struct {
 
 extern Tcb mainTcb;
 extern Tcb task1Tcb;
+extern Tcb task2Tcb;
 
 extern uint8_t tempStack[TASK_STACK_SIZE];
 
