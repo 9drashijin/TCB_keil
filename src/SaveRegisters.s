@@ -30,6 +30,7 @@ saveReg		  	  PROC
 								
 								
 								push   {r4-r11}
+								push	 {lr}
 
 								ldr    r0,  =runningQueue   ; mov address of runningQ(mainTcb) to r0
 								ldr    r1,  [r0]		    		; deref runningQ, then content mov to r1
@@ -40,6 +41,8 @@ saveReg		  	  PROC
 								ldr    r0,  =readyQueue     ; mov address of taskOne to r0
 								ldr    r1,  [r0]						; deref readyQ, then content mov to r1
 								ldr    lr,  [r1,#8]					; value of taskOne move to lr
+								
+								str	   sp,  [r1,#8]		    	; Store the sp value
 
 								ldr    r0,  [lr,#32]				; should get 0xabababab
 								ldr    r1,  [lr,#36]				; should get 0x11111111
@@ -60,6 +63,7 @@ saveReg		  	  PROC
 								pop   {r4-r11}
 								pop		{r0-r3}
 								pop		{r12}
+								pop		{lr}
 								
 								bx 	   lr										; branch back
 

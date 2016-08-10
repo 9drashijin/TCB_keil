@@ -1,8 +1,10 @@
 #include "TCB.h"
+#include "LinkedList.h"
 
 Tcb mainTcb;
 Tcb task1Tcb;
 Tcb task2Tcb;
+Tcb task3Tcb;
 Tcb *readyQueue;
 Tcb *runningQueue;
 
@@ -11,10 +13,16 @@ uint8_t tempStack[TASK_STACK_SIZE];
 CpuContext *cc;
 
 void taskOne(void){
-	while(1){}
+	int i = 0;
+	while(1){ i++; }
 }
 void taskTwo(void){
-	while(1){}
+	int i = 0;
+	while(1){ i++; }
+}
+void taskThree(void){
+	int i = 0;
+	while(1){ i++; }
 }
 
 /**
@@ -23,6 +31,7 @@ void taskTwo(void){
 void initTcb() {
 	mainTcb.name = "main_thread";
 	mainTcb.sp = 0x12345678;
+	List_addFirst(list,&mainTcb);
 	
 	task1Tcb.name = "task_1";
 	cc = (CpuContext *)(((uint32_t)(&task1Tcb.virtualStack[TASK_STACK_SIZE])) - sizeof(CpuContext));
@@ -48,12 +57,26 @@ void initTcb() {
 	runningQueue = &mainTcb;
 	readyQueue = &task1Tcb;
 	
+	//List_addLast(list,&task1Tcb);
+	
 	task2Tcb.name = "task_2";
 	cc = (CpuContext *)(((uint32_t)(&task2Tcb.virtualStack[TASK_STACK_SIZE])) - sizeof(CpuContext));
 	task2Tcb.sp = (uint32_t)cc;
 	
 	cc->pc   = (uint32_t)taskTwo;
 	cc->xpsr = 0x01000000;
+	
+	//List_addLast(list,&task2Tcb);
+	
+	
+	task2Tcb.name = "task_3";
+	cc = (CpuContext *)(((uint32_t)(&task3Tcb.virtualStack[TASK_STACK_SIZE])) - sizeof(CpuContext));
+	task3Tcb.sp = (uint32_t)cc;
+	
+	cc->pc   = (uint32_t)taskThree;
+	cc->xpsr = 0x01000000;
+	
+	//List_addLast(list,&task3Tcb);
 	
 }
 

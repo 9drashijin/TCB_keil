@@ -1,16 +1,16 @@
 #include <stdio.h>
-#include <malloc.h>
 #include "LinkedList.h"
 
+LinkedList *list;
+
 LinkedList *createLinkedList(){
-	LinkedList *list = malloc(sizeof(LinkedList));
 	list->head = NULL;
 	list->tail = NULL;
 	list->length = 0;
 	return list;
 }
 
-void List_addFirst(LinkedList *list, Element *elem){
+void List_addFirst(LinkedList *list, Tcb *elem){
 	if(list->head == NULL && list-> tail == NULL){
 		list->head = elem;
 		list->tail = elem;
@@ -26,8 +26,8 @@ void List_addFirst(LinkedList *list, Element *elem){
 		list->length++;
 }
 
-void List_addLast(LinkedList *list, Element *elem){
-	Element *cPtr;
+void List_addLast(LinkedList *list, Tcb *elem){
+	Tcb *cPtr;
 	cPtr = list->head;
 
 	if(list->head == NULL && list-> tail == NULL){
@@ -54,9 +54,9 @@ void List_addLast(LinkedList *list, Element *elem){
 	list->length++;
 }
 
-Element *List_removeFirst(LinkedList *list){
+Tcb *List_removeFirst(LinkedList *list){
 
-	Element *tempElem;
+	Tcb *tempElem;
 	tempElem = list->head;
 
 	if(list->head == NULL && list-> tail == NULL)
@@ -75,9 +75,9 @@ Element *List_removeFirst(LinkedList *list){
 	return tempElem;
 }
 
-Element *List_removeLast(LinkedList *list){
+Tcb *List_removeLast(LinkedList *list){
 
-	Element *tempElem, *cPtr;
+	Tcb *tempElem, *cPtr;
 	tempElem = list->head;
 	cPtr = list->head;
 

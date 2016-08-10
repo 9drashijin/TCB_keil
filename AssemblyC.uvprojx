@@ -427,6 +427,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\TCB.h</FilePath>
             </File>
+            <File>
+              <FileName>LinkedList.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\LinkedList.c</FilePath>
+            </File>
+            <File>
+              <FileName>LinkedList.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\LinkedList.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

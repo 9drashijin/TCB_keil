@@ -2,6 +2,7 @@
 #define  __LINKED_LIST_H__
 
 #include <stdint.h>
+#include "TCB.h"
 
 typedef struct Element_t{
 	struct Element_t *next;
@@ -9,15 +10,17 @@ typedef struct Element_t{
 }Element;
 
 typedef struct {
-	Element *head;
-	Element *tail;
+	Tcb *head;
+	Tcb *tail;
 	uint32_t length;
 }LinkedList;
 
+extern LinkedList *list;
+
 LinkedList *createLinkedList();
-void List_addFirst(LinkedList *list, Element *elem);
-Element *List_removeFirst(LinkedList *list);
-void List_addLast(LinkedList *list, Element *elem);
-Element *List_removeLast(LinkedList *list);
+void List_addFirst(LinkedList *list, Tcb *elem);
+Tcb *List_removeFirst(LinkedList *list);
+void List_addLast(LinkedList *list, Tcb *elem);
+Tcb *List_removeLast(LinkedList *list);
 
 #endif //__LINKED_LIST_H__

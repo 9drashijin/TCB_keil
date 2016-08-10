@@ -36,11 +36,13 @@ typedef struct {
 extern Tcb mainTcb;
 extern Tcb task1Tcb;
 extern Tcb task2Tcb;
+extern Tcb task3Tcb;
 
 extern uint8_t tempStack[TASK_STACK_SIZE];
 
 void taskOne(void);
 void taskTwo(void);
+void taskThree(void);
 void initTcb(void);
 
 #endif	// __TCB_H__
